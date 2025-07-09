@@ -696,8 +696,8 @@ def show_statistical_analysis(df):
         
         # T-test for gender differences
         t_test_result = stats.ttest_ind(male_purchases, female_purchases)
-        t_stat = t_test_result[0]
-        p_value = t_test_result[1]
+        t_stat = t_test_result.statistic
+        p_value = t_test_result.pvalue
         
         col1, col2 = st.columns(2)
         
@@ -707,9 +707,7 @@ def show_statistical_analysis(df):
             st.write(f"**P-value:** {p_value:.6f}")
             st.write(f"**Significance level:** α = 0.05")
             
-            # Ensure p_value is a float for comparison
-            p_value_float = float(p_value) if hasattr(p_value, '__float__') else p_value
-            if p_value_float < 0.05:
+            if p_value < 0.05:
                 st.success("**Result: Statistically Significant Difference**")
                 st.write("**Inference:** We reject the null hypothesis. There is sufficient evidence to conclude that purchase amounts differ significantly between males and females.")
             else:
