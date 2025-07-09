@@ -8,12 +8,12 @@ Walmart's management team wants to analyze customer purchase behavior (specifica
 
 ## The key questions
 
-**Do women spend more on Black Friday than men?**
-**Are women spending more money per transaction than men? Why or Why not?**
-**Confidence intervals and distribution of the mean of the expenses by female and male customers**
-**Are confidence intervals of average male and female spending overlapping? How can Walmart leverage this conclusion to make changes or improvements?**
-**Results when the same activity is performed for Married vs Unmarried**
-**Results when the same activity is performed for Age**
+- **Do women spend more on Black Friday than men?**
+- **Are women spending more money per transaction than men? Why or Why not?**
+- **Confidence intervals and distribution of the mean of the expenses by female and male customers**
+- **Are confidence intervals of average male and female spending overlapping? How can Walmart leverage this conclusion to make changes or improvements?**
+- **Results when the same activity is performed for Married vs Unmarried**
+- **Results when the same activity is performed for Age**
 
 ## 📊 Analysis Features
 
@@ -22,6 +22,25 @@ Walmart's management team wants to analyze customer purchase behavior (specifica
 - **Central Limit Theorem** - Sample size impact on statistical precision
 - **Customer Segmentation** - Age, occupation, city category analysis
 - **Interactive Dashboard** - Comprehensive Streamlit application
+
+## 🔍 Detailed Research Framework
+
+### Hypothesis Testing
+- **Null Hypothesis (H₀)**: No significant difference in spending between male and female customers
+- **Alternative Hypothesis (H₁)**: Significant difference in spending between male and female customers
+- **Significance Level**: α = 0.05
+
+### Statistical Methods
+- **T-Test**: Compare mean spending between genders
+- **Confidence Intervals**: 95% and 99% confidence intervals for spending estimates
+- **Effect Size**: Cohen's d to measure practical significance
+- **Distribution Analysis**: Histograms and box plots for spending distributions
+
+### Business Metrics
+- **Average Transaction Value**: By gender, marital status, and age
+- **Spending Patterns**: Peak spending times and product categories
+- **Customer Segmentation**: High-value customer identification
+- **Revenue Optimization**: Targeted marketing strategies
 
 ## 🚀 Quick Start
 
