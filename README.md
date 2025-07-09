@@ -52,7 +52,7 @@ Walmart's management team wants to analyze customer purchase behavior (specifica
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/WalmartBlackFriday.git
+   git clone https://github.com/UmaRamanathan-DA/WalmartBlackFriday.git
    cd WalmartBlackFriday
    ```
 
