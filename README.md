@@ -10,6 +10,8 @@ Statistical analysis of customer purchase behavior during Black Friday to determ
 
 Walmart's management team wants to analyze customer purchase behavior (specifically, purchase amount) against customer gender and other factors to make better business decisions. 
 
+📍 [Click here to launch the app](https://walmartblackfriday-umaramanathan.streamlit.app/) 
+
 ## The key questions
 
 - **Do women spend more on Black Friday than men?**
