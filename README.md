@@ -1,5 +1,9 @@
 # Walmart Black Friday Analysis
 
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/your-username/WalmartBlackFriday/main/app.py)
+[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![Streamlit](https://img.shields.io/badge/Streamlit-1.28+-red.svg)](https://streamlit.io/)
+
 Statistical analysis of customer purchase behavior during Black Friday to determine if spending habits differ between male and female customers.
 
 ## 🎯 Business Problem
@@ -44,10 +48,12 @@ Walmart's management team wants to analyze customer purchase behavior (specifica
 
 ## 🚀 Quick Start
 
+### Local Development
+
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/walmart-confidence-interval.git
-   cd walmart-confidence-interval
+   git clone https://github.com/your-username/WalmartBlackFriday.git
+   cd WalmartBlackFriday
    ```
 
 2. **Install dependencies**
@@ -63,6 +69,40 @@ Walmart's management team wants to analyze customer purchase behavior (specifica
 4. **Access the dashboard**
    - Local: http://localhost:8501
    - Network: http://your-ip:8501
+
+### 🌐 Deploy to Web (Recommended)
+
+**Streamlit Cloud (FREE):**
+1. Push your code to GitHub
+2. Go to [share.streamlit.io](https://share.streamlit.io)
+3. Connect your GitHub repository
+4. Deploy automatically
+
+**Other Options:**
+- **Railway**: [railway.app](https://railway.app) - Easy deployment
+- **Render**: [render.com](https://render.com) - Reliable hosting
+- **Heroku**: Full control with custom domains
+
+📖 **Detailed deployment guide**: See [DEPLOYMENT.md](DEPLOYMENT.md)
+
+### 🔧 Troubleshooting Deployment
+
+If you encounter dependency issues during deployment:
+
+1. **Use stable requirements**:
+   ```bash
+   # Replace requirements.txt with stable versions
+   cp requirements-stable.txt requirements.txt
+   ```
+
+2. **Specify Python version**:
+   - The `runtime.txt` file specifies Python 3.11
+   - This ensures compatibility with all dependencies
+
+3. **Common issues**:
+   - **Python 3.13 compatibility**: Use Python 3.11 for best compatibility
+   - **Pandas/Numpy conflicts**: Use the stable requirements file
+   - **Memory issues**: Consider using smaller dataset for demo
 
 ## 📁 Project Structure
 

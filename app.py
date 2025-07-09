@@ -20,20 +20,75 @@ st.set_page_config(
 # Custom CSS for better styling
 st.markdown("""
 <style>
+    /* Enhanced theme with gradients and modern styling */
     .main-header {
-        font-size: 3rem;
-        color: #1f77b4;
+        background: linear-gradient(90deg, #1f77b4, #ff7f0e);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 3.5rem;
+        font-weight: bold;
         text-align: center;
         margin-bottom: 2rem;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
     }
+    
     .metric-card {
-        background-color: #f0f2f6;
-        padding: 1rem;
-        border-radius: 0.5rem;
-        border-left: 4px solid #1f77b4;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 1.5rem;
+        border-radius: 1rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin: 1rem 0;
+        border: none;
     }
+    
     .sidebar .sidebar-content {
-        background-color: #f8f9fa;
+        background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);
+    }
+    
+    .stButton > button {
+        background: linear-gradient(90deg, #1f77b4, #ff7f0e);
+        color: white;
+        border: none;
+        border-radius: 0.5rem;
+        padding: 0.5rem 1rem;
+        font-weight: bold;
+        transition: all 0.3s ease;
+    }
+    
+    .stButton > button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Enhanced dataframes */
+    .dataframe {
+        border-radius: 0.5rem;
+        overflow: hidden;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Chart containers */
+    .stPlotlyChart {
+        border-radius: 0.5rem;
+        padding: 1rem;
+        background: white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Success/Warning/Error messages */
+    .stAlert {
+        border-radius: 0.5rem;
+        border: none;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Expander styling */
+    .streamlit-expanderHeader {
+        background: linear-gradient(90deg, #f8f9fa, #e9ecef);
+        border-radius: 0.5rem;
+        border: none;
+        font-weight: bold;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -45,7 +100,7 @@ def load_data():
         df = pd.read_csv('Dataset/Walmart_data.csv')
         
         # Basic preprocessing
-        df['Gender'] = df['Gender'].map({'M': 'Male', 'F': 'Female'})
+        df['Gender'] = df['Gender'].replace({'M': 'Male', 'F': 'Female'})
         
         # Convert age bins to more readable format
         age_mapping = {
@@ -57,7 +112,7 @@ def load_data():
             '51-55': '51-55',
             '55+': '55+'
         }
-        df['Age'] = df['Age'].map(age_mapping)
+        df['Age'] = df['Age'].replace(age_mapping)
         
         return df
     except FileNotFoundError:
@@ -640,7 +695,9 @@ def show_statistical_analysis(df):
         female_purchases = df[df['Gender']=='Female']['Purchase']
         
         # T-test for gender differences
-        t_stat, p_value = stats.ttest_ind(male_purchases, female_purchases)
+        t_test_result = stats.ttest_ind(male_purchases, female_purchases)
+        t_stat = t_test_result[0]
+        p_value = t_test_result[1]
         
         col1, col2 = st.columns(2)
         
@@ -650,7 +707,9 @@ def show_statistical_analysis(df):
             st.write(f"**P-value:** {p_value:.6f}")
             st.write(f"**Significance level:** α = 0.05")
             
-            if p_value < 0.05:
+            # Ensure p_value is a float for comparison
+            p_value_float = float(p_value) if hasattr(p_value, '__float__') else p_value
+            if p_value_float < 0.05:
                 st.success("**Result: Statistically Significant Difference**")
                 st.write("**Inference:** We reject the null hypothesis. There is sufficient evidence to conclude that purchase amounts differ significantly between males and females.")
             else:
