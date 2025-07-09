@@ -97,7 +97,7 @@ def load_data():
     """Load and preprocess the Walmart dataset"""
     try:
         # Try to load the data
-        df = pd.read_csv('Dataset/Walmart_data.csv')
+        df = pd.read_csv('Dataset/walmart_data.csv')
         
         # Basic preprocessing
         df['Gender'] = df['Gender'].replace({'M': 'Male', 'F': 'Female'})
@@ -116,7 +116,7 @@ def load_data():
         
         return df
     except FileNotFoundError:
-        st.error("Dataset not found! Please ensure 'Walmart_data.csv' is in the Dataset folder.")
+        st.error("Dataset not found! Please ensure 'walmart_data.csv' is in the Dataset folder.")
         return None
     except Exception as e:
         st.error(f"Error loading data: {str(e)}")
@@ -696,8 +696,8 @@ def show_statistical_analysis(df):
         
         # T-test for gender differences
         t_test_result = stats.ttest_ind(male_purchases, female_purchases)
-        t_stat = t_test_result.statistic
-        p_value = t_test_result.pvalue
+        t_stat = t_test_result[0]
+        p_value = t_test_result[1]
         
         col1, col2 = st.columns(2)
         
